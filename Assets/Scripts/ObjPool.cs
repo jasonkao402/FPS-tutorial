@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Pool{
+public struct Pool{
     public string ID;
     public GameObject blueprint;
     public int amt;
