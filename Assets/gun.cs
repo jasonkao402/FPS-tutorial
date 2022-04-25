@@ -14,7 +14,6 @@ public class gun : MonoBehaviour
         cdNow -= Time.deltaTime;
         if(cdNow < 0 && Input.GetMouseButton(0))
         {
-            //some
             Rigidbody bulletrb = Instantiate(bullet, transform.position + transform.forward * offset, transform.rotation).GetComponent<Rigidbody>();
             bulletrb.velocity = transform.forward * bulletforce;
             cdNow = cdMax;

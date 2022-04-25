@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FPSlook : MonoBehaviour
+public class fpsLook : MonoBehaviour
 {
     public float sense;
     float inputx, inputy;
