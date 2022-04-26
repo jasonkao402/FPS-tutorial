@@ -5,24 +5,27 @@ using UnityEngine;
 public class fpsMove : MonoBehaviour
 {
     public float runSpd, tiltAng;
-    public Transform[] body;
+    float drag;
+    public Transform[] tilt;
+    public Transform head;
     Vector3 dir;
     Rigidbody rb;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        drag = rb.drag;
     }
 
     private void FixedUpdate() {
         dir = Input.GetAxisRaw("Horizontal")*transform.right + Input.GetAxisRaw("Vertical")*transform.forward;
-        rb.AddForce(dir * runSpd, ForceMode.VelocityChange);
-        //transform.position += dir * runSpd;
-        foreach(Transform t in body)
+        rb.AddForce(dir.normalized * Mathf.Lerp(runSpd, runSpd*0.1f, Input.GetAxis("Sneak")), ForceMode.VelocityChange);
+        rb.drag = Mathf.Lerp(drag, drag*0.25f, Input.GetAxisRaw("Sneak"));
+        
+        foreach(Transform t in tilt)
         {
             t.localRotation = Quaternion.Lerp(t.localRotation, Quaternion.AngleAxis(Input.GetAxisRaw("Tilting")*tiltAng, Vector3.forward), 0.25f);
         }
+        
+        head.localPosition = Vector3.Lerp(head.localPosition, new Vector3(0, Mathf.Lerp(2f, 0.666f, Input.GetAxisRaw("Sneak")), 0), 0.15f);
     }
-    // private void Update() {
-    //     transform.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) * runSpd * Time.deltaTime;
-    // }
 }
