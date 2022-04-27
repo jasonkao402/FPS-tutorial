@@ -14,10 +14,6 @@ public class gunHandle : MonoBehaviour
     Camera cam;
     fpsLook fpsLook;
     public AudioClip sfx;
-    private void Awake() {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
     private void Start() {
         fpsLook = GetComponent<fpsLook>();
         cdNow = cdMax;
@@ -33,7 +29,12 @@ public class gunHandle : MonoBehaviour
             SoundManager.instance.RandomizeSfx(sfx);
             cdNow = cdMax;
             recoilZ += recoilVec.z;
-            currentGun.localRotation = Quaternion.Slerp(currentGun.localRotation, Quaternion.Euler(recoilVec.y*Mathf.PerlinNoise(Time.time, 0f), recoilVec.x*(Mathf.PerlinNoise(Time.time, 0f)-0.5f), 0), 0.5f);
+            currentGun.localRotation = Quaternion.Slerp(currentGun.localRotation, 
+            Quaternion.Euler(
+                recoilVec.y*Mathf.PerlinNoise(Time.time, 0f), 
+                recoilVec.x*(Mathf.PerlinNoise(Time.time, 0f)-0.5f),
+                0f)
+            , 0.5f);
         }
     }
     private void FixedUpdate() {
