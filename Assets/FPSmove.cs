@@ -23,7 +23,7 @@ public class fpsMove : MonoBehaviour
         
         foreach(Transform t in tilt)
         {
-            t.localRotation = Quaternion.Lerp(t.localRotation, Quaternion.AngleAxis(Input.GetAxisRaw("Tilting")*tiltAng, Vector3.forward), 0.25f);
+            t.localRotation = Quaternion.Lerp(t.localRotation, Quaternion.AngleAxis(Input.GetAxisRaw("Tilting")*tiltAng, Vector3.forward), 0.2f);
         }
         
         head.localPosition = Vector3.Lerp(head.localPosition, new Vector3(0, Mathf.Lerp(2f, 0.666f, Input.GetAxisRaw("Sneak")), 0), 0.15f);

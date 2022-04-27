@@ -6,7 +6,8 @@ public class fpsLook : MonoBehaviour
 {
     public float sense;
     float inputx, inputy;
-    float angX, angY;
+    [HideInInspector]
+    public float angX, angY;
     public bool allowX, allowY;
     Quaternion orig;
     private void Start() {

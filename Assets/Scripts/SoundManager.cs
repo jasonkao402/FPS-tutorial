@@ -5,7 +5,8 @@ public class SoundManager : MonoBehaviour {
 	public static SoundManager instance = null;     //Allows other scripts to call functions from SoundManager.             
     public float lowPitchRange = .95f;              //The lowest a sound effect will be randomly pitched.
     public float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
-	public int vo;
+	[Range(0f, 1f)]
+	public float vol;
 	public AudioSource efxSource, bgmSource;
 	public AudioClip[] bgmList;
 	void Awake (){
@@ -22,7 +23,7 @@ public class SoundManager : MonoBehaviour {
 		DontDestroyOnLoad (gameObject);
 	}
 	private void Start() {
-		efxSource.volume = vo/100f;
+		efxSource.volume = vol;
 	}
 	public void PlaySingle(AudioClip clip)
 	{
@@ -45,16 +46,14 @@ public class SoundManager : MonoBehaviour {
 	}
 	private IEnumerator fadeIn(){
 		bgmSource.Play();
-		bgmSource.volume = 0;
-		for(int i = 0; i <= vo; i++){
-			bgmSource.volume = i * 0.01f;
+		while(bgmSource.volume < vol){
+			bgmSource.volume += 0.01f;
 			yield return new WaitForSeconds(0.01f);
 		}
 	}
 	private IEnumerator fadeOut(){
-		bgmSource.volume = vo * 0.01f;
-		for(int i = vo; i >= 0; i--){
-			bgmSource.volume = i * 0.01f;
+		while(bgmSource.volume >= 0f){
+			bgmSource.volume -= 0.01f;
 			yield return new WaitForSeconds(0.01f);
 		}
 		bgmSource.Stop();
