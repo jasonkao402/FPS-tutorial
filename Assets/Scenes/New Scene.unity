@@ -1887,6 +1887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpd: 1.2
+  tiltAng: 12
   head: {fileID: 1812933322}
   tilt: {fileID: 459161888}
 --- !u!54 &723483854
@@ -3298,7 +3299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb7b4582c9fefb48907eee297e88f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 277171395113586424, guid: 49a263375c303444dad2844353fadcfc, type: 3}
   currentGun: {fileID: 1242001125}
   muzzelPos: {fileID: 902517440}
   cdMax: 0.1
@@ -3307,9 +3307,8 @@ MonoBehaviour:
   offset: 0.65
   sway: 0.02
   recoilAttr: {x: 3, y: -3, z: -0.1}
-  zoom:
-  - 60
-  - 30
+  zoomHipfire: 60
+  zoomAimDS: 30
   adsPos:
   - {fileID: 1417288475}
   - {fileID: 1116676903}

@@ -4,12 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 public class gunHandle : MonoBehaviour
 {
-    public GameObject bullet;
     public Transform currentGun, muzzelPos;
     public float cdMax, cdNow, bulletforce, offset, sway;
     public Vector3 recoilAttr;
     Vector3 swayVec, recoilVec;
-    public float[] zoom = new float[2];
+    public float zoomHipfire, zoomAimDS;
     public Transform[] adsPos = new Transform[2];
     Camera cam;
     fpsLook fpsLook;
@@ -43,9 +42,9 @@ public class gunHandle : MonoBehaviour
         swayVec = new Vector3(Input.GetAxisRaw("Mouse X")*sway, Input.GetAxisRaw("Mouse Y")*sway, -recoilVec.z);
     }
     private void FixedUpdate() {
+        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, Input.GetMouseButton(1) ? zoomAimDS : zoomHipfire, 0.25f) ;
         hitMarker.color = Color.Lerp(hitMarker.color, white0, 0.1f);
         recoilVec = Vector3.Lerp(recoilVec, Vector3.zero, 0.2f);
-        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoom[Input.GetMouseButton(1) ? 1 : 0], 0.25f);
         currentGun.localPosition = Vector3.Lerp(currentGun.localPosition, adsPos[Input.GetMouseButton(1) ? 1 : 0].localPosition - swayVec, 0.25f);
         fpsLook.offset = currentGun.localRotation = Quaternion.Slerp(currentGun.localRotation, Quaternion.identity, 0.1f);
     }
