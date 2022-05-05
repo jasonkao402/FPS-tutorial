@@ -47,7 +47,7 @@ public class gunHandle : MonoBehaviour
         recoilVec = Vector3.Lerp(recoilVec, Vector3.zero, 0.2f);
         cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoom[Input.GetMouseButton(1) ? 1 : 0], 0.25f);
         currentGun.localPosition = Vector3.Lerp(currentGun.localPosition, adsPos[Input.GetMouseButton(1) ? 1 : 0].localPosition - swayVec, 0.25f);
-        fpsLook.offset = currentGun.localRotation = Quaternion.Slerp(currentGun.localRotation, Quaternion.AngleAxis(Input.GetAxisRaw("Tilting")*fpsMove.tiltAng, Vector3.forward), 0.1f);
+        fpsLook.offset = currentGun.localRotation = Quaternion.Slerp(currentGun.localRotation, Quaternion.identity, 0.1f);
     }
     public void hitFeedback(){
         hitMarker.color = Color.white;

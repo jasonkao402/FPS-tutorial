@@ -3306,7 +3306,7 @@ MonoBehaviour:
   bulletforce: 150
   offset: 0.65
   sway: 0.02
-  recoilAttr: {x: 4, y: -3, z: -0.15}
+  recoilAttr: {x: 3, y: -3, z: -0.1}
   zoom:
   - 60
   - 30
