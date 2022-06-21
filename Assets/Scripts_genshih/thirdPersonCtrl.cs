@@ -11,6 +11,7 @@ public class thirdPersonCtrl : MonoBehaviour {
 	RaycastHit hitInfo;
 	public bool groundCheck;
 	void Start () {
+		Cursor.lockState = CursorLockMode.Locked;
 		rb = GetComponent<Rigidbody>();
 	}
 	private void Update() {
@@ -22,7 +23,7 @@ public class thirdPersonCtrl : MonoBehaviour {
 		cHeading = Quaternion.Euler(0, cam.eulerAngles.y, 0);
 		vHeading = cHeading * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
-		transform.forward = Vector3.Slerp(transform.forward, vHeading, 0.1f);
+		transform.forward = Vector3.Slerp(transform.forward, vHeading, 0.15f);
 
 		rb.AddForce( vHeading * spdCoff, ForceMode.VelocityChange);
 
