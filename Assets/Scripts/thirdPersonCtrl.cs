@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FPS_Ctrl : MonoBehaviour {
+public class thirdPersonCtrl : MonoBehaviour {
+	public Transform cam;
+	Vector3 vHeading;
+	Quaternion cHeading;
 	Rigidbody rb;
 	public float spdCoff, jmpCoff, maxCheckHeight;
 	RaycastHit hitInfo;
@@ -14,11 +17,15 @@ public class FPS_Ctrl : MonoBehaviour {
 		if(groundCheck && Input.GetKeyDown(KeyCode.Space)){
 			rb.velocity += transform.up * jmpCoff;
 		}
-		rb.AddForce((transform.forward * Input.GetAxisRaw("Vertical")  + 
-					 transform.right * Input.GetAxisRaw("Horizontal")) * 
-					 spdCoff * Time.deltaTime, ForceMode.VelocityChange);
 	}
 	private void FixedUpdate() {
+		cHeading = Quaternion.Euler(0, cam.eulerAngles.y, 0);
+		vHeading = cHeading * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+
+		transform.forward = Vector3.Slerp(transform.forward, vHeading, 0.1f);
+
+		rb.AddForce( vHeading * spdCoff, ForceMode.VelocityChange);
+
 		groundCheck = Physics.SphereCast(transform.position, 0.2f,
 					  Vector3.down, out hitInfo, maxCheckHeight, 1<<6);
 	}
