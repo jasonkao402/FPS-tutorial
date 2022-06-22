@@ -34,25 +34,38 @@ public class iceChara : MonoBehaviour
     void elementalSkill_Short()
     {
         Transform ct = Camera.main.transform;
-        Vector3 spawnPos;
-        Physics.SphereCast(ct.position, 0.2f, ct.forward, out hitInfo, 200, 1<<6);
-        spawnPos = transform.position + charaOffset * transform.up + randOffset * Random.insideUnitSphere;
-        Debug.DrawRay(hitInfo.point, Vector3.up*5, Color.yellow, 3);
-        Rigidbody rb = ObjPool.Instance.TakePool("iceLance01", spawnPos, Quaternion.FromToRotation(Vector3.forward, hitInfo.point - spawnPos)).GetComponent<Rigidbody>();
-        rb.velocity = bulletSpeed * (hitInfo.point - spawnPos).normalized;
+        Vector3 spawnPos, castPoi, direction;
+        if(Physics.SphereCast(ct.position, 0.2f, ct.forward, out hitInfo, Camera.main.farClipPlane, 1<<6))
+            castPoi = hitInfo.point;
+        else
+            castPoi = transform.position + ct.forward * Camera.main.farClipPlane;
+        for(int i = -60; i <= 60; i+=120)
+        {
+            spawnPos = transform.position + charaOffset * (transform.up + (Quaternion.AngleAxis(i, Vector3.up) * transform.forward));
+            direction = castPoi - spawnPos;
+            ObjPool.Instance.TakePool("summon", spawnPos, Quaternion.FromToRotation(Vector3.forward, direction)).GetComponentInChildren<Rigidbody>();
+            lanceData ld = ObjPool.Instance.TakePool("iceLance01", spawnPos, Quaternion.FromToRotation(Vector3.forward, direction)).GetComponentInChildren<lanceData>();
+            ld.vel = bulletSpeed * direction.normalized;
+            ld.shootProjectileCaller(Random.Range(.2f, .4f));
+        }
     }
     void elementalSkill_Long()
     {
         Transform ct = Camera.main.transform;
-        Vector3 spawnPos, landPos;
-        Physics.SphereCast(ct.position, 0.2f, ct.forward, out hitInfo, 200, 1<<6);
-        for(int i = 0; i < 6; i++)
+        Vector3 spawnPos, castPoi, landPos, direction;
+        if(Physics.SphereCast(ct.position, 0.2f, ct.forward, out hitInfo, Camera.main.farClipPlane, 1<<6))
+            castPoi = hitInfo.point;
+        else
+            castPoi = transform.position + ct.forward * Camera.main.farClipPlane*.1f;
+        
+        for(int i = 0, j = 0; i < 360; i+=60, j++)
         {
-            spawnPos = hitInfo.point + 40 * transform.up + randOffset * Random.onUnitSphere;
-            landPos = hitInfo.point + randOffset * Random.insideUnitSphere;
-            Debug.DrawRay(landPos, Vector3.up*5, Color.yellow, 3);
-            Rigidbody rb = ObjPool.Instance.TakePool("iceLance01", spawnPos, Quaternion.FromToRotation(Vector3.forward, landPos - spawnPos)).GetComponent<Rigidbody>();
-            rb.velocity = bulletSpeed * (landPos - spawnPos).normalized;
+            spawnPos = castPoi + 8 * Vector3.up * randOffset;
+            landPos =  castPoi + Quaternion.AngleAxis(i, Vector3.up) * Vector3.forward * randOffset;
+            direction = landPos - spawnPos;
+            lanceData ld = ObjPool.Instance.TakePool("iceLance01", spawnPos, Quaternion.FromToRotation(Vector3.forward, direction)).GetComponentInChildren<lanceData>();
+            ld.vel = bulletSpeed * direction.normalized;
+            ld.shootProjectileCaller(j*0.1f);
         }
     }
 }
