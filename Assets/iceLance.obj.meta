@@ -7,8 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: group_0_10988977Mat
-    second: {fileID: 2100000, guid: 2ab8149ec4775284bada96c1b85b4a09, type: 2}
+      name: color_11593967
+    second: {fileID: 2100000, guid: a92d372847a0c7540b576a60bad6167a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_12568524
+    second: {fileID: 2100000, guid: 6907d976a1aaefd44846ab62869f68fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_16448250
+    second: {fileID: 2100000, guid: f7a0116bbaa1cee43bafcf8aaa64dd2f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_6383466
+    second: {fileID: 2100000, guid: e6908a7dfc833a34b89c92557b430972, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -17,17 +32,12 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: group_0_16448250Mat
-    second: {fileID: 2100000, guid: 86cd8261f86ad1049993216d26b5d14e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: group_0_6383466Mat
-    second: {fileID: 2100000, guid: 1a865d9392cc26f45bb79bd9652026d7, type: 2}
+      name: group_0_12568524Mat
+    second: {fileID: 2100000, guid: a92d372847a0c7540b576a60bad6167a, type: 2}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
-    materialSearch: 1
+    materialSearch: 0
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
@@ -55,7 +65,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 0.02
-    meshCompression: 1
+    meshCompression: 3
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
@@ -86,7 +96,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0

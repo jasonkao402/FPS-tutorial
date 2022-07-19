@@ -887,7 +887,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831479460}
-  m_LocalRotation: {x: 0.0033380229, y: 0.000000017218966, z: -5.7477616e-11, w: 0.99999446}
+  m_LocalRotation: {x: 0.0033380229, y: -0.000000017218966, z: 5.7477616e-11, w: 0.99999446}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -946,10 +946,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4078499931454073781, guid: 78efc0c7f88fd6d4d9cce2c04bb002da, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 86cd8261f86ad1049993216d26b5d14e, type: 2}
     - target: {fileID: 4775444654202061900, guid: 78efc0c7f88fd6d4d9cce2c04bb002da, type: 3}
       propertyPath: m_Name
       value: iceLanceProj
@@ -1134,8 +1130,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.026532687, y: -0.000000018213042, z: 4.3143006e-10, w: 0.999648}
-  m_LocalPosition: {x: 0.19993746, y: 3, z: -12.085734}
+  m_LocalRotation: {x: 0.026532687, y: -0.000000018213042, z: 4.314341e-10, w: 0.999648}
+  m_LocalPosition: {x: 0, y: 3, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2028,7 +2024,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853770169}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.19993746, y: 0, z: -0.08573429}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 947579881}
@@ -2343,7 +2339,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041039269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.19993746, y: 3, z: -12.085734}
+  m_LocalPosition: {x: 0, y: 3, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1736805887}
